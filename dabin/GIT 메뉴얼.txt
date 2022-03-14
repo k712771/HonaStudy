@@ -1,0 +1,86 @@
+GIT 메뉴얼
+
+* 사용하는 에디터 등록(vscode 예제)
+git config core.editor "'C:\Users\[윈도우아이디]\AppData\Local\Programs\Microsoft VS Code\Code.exe' -w"
+
+1. 자신의 브랜치 생성
+- git checkout master (마스터 브랜치로 로그인 만약 현재 master 브랜치로 로그인 된 상태라면 하지 않아도 됨)
+- git checkout -b [사용할 브랜치 명]
+
+
+2. 자신의 브랜치 정보 업데이트 PUSH
+- git status (현재 상태를 출력함)
+- git add -A (수정한 파일을 git에 등록함)
+- git status (등록하면서 문제가 있는지 확인)
+- git commit (등록한 파일을 git log에 기록함)
+- 에디터에 커밋 작업 내용을 간단한게 입력후 해당 파일을 닫음
+- git pull origin [BRANCH명] (리모트 서버에 있는 최신 정보를 업데이트 함)
+- git push origin [BRANCH명] (리모트 서버로 현재 본인의 작업 정보를 업로드함)
+
+
+3. master브랜치로 작업본 업데이트
+- 2번의 작업 후
+- git checkout master (master 브랜치로 로그인)
+- git merge [BRANCH명] (자신의 브랜치 정보를 master로 업데이트)
+- git status (문제가 없는지 상태 확인)
+- git pull origin master (리모트 서버에 있는 최신 정보를 업데이트 함)
+- git push origin master (리모트 서버로 업데이트 함)
+
+
+
+4. 전반적 명령어 정리
+
+- git checkout [브랜치명] : 브랜치 로그인
+- git checkout [파일경로] : 작업한 내용 캔슬(원래대로 되돌림)
+- git status : 현재 상태를 보여줌(오류사항, 등록사항 등을 나타냄)
+- git add -A : 작업한 파일들 모두를 등록함
+- git commit : 작업한 내역들을 기록함 만약 등록된 에디터가 없다면 git commit -m "커밋내용";
+- git pull origin [받을 브랜치 명] : 리모트에 있는 브랜치 정보를 업데이트 받음
+- git merge [대상 브랜치 명] : 로컬 브랜치의 정보를 가져 옴
+- git log -[숫자] : 현재 브랜치의 commit 로그를 확인
+- git reset [커밋번호] : 해당 커밋으로 되돌림
+- git branch : 로컬 브랜치 목록
+- git branch -r : 리모트 브랜치 목록
+
+1. 작업물 PUSH 할 때
+- git status : 작업 리스트 확인
+- git add -A : 작업한 모든 파일 git에 등록
+- git status : 파일들이 모두 초록색으로 변하면 성공
+- git commit : 작업 로그에 등록
+- git pull origin master : 작업물 최신화
+- git status : 컨플릭 또는 오류가 없는지 확인(컨플릭이 있을 경우 해소)
+- git push origin master : 서버에 업로드
+
+2. 작업물 최신화(PULL)
+- git status : 현재 상태 확인
+- git pull origin master : 최신화
+- git status : 컨플릭 또는 오류가 없는지 확인(컨플릭이 있을 경우 해소)
+
+* 유의 사항
+- 항상 작업 전에 반드시 pull을 받아 최신화를 시키고 시작한다.
+- 작업시 팀원과 같은 파일에 작업을 하고 있지 않은지 확인한다.
+- PUSH할 때 순서를 반드시 지킨다. PULL받기 전에 PUSH할 시 문제가 발생할 가능성이 높다.
+
+
+common : 모든 페이지에서 공통적으로 사용하는 이미지
+icon : 공통 적으로 사용하는 의미적인 작은 아이콘 이미지
+sprite : sass에서 사용이 편리하도록 합쳐진 이미지 사용시 사용(자동생성)
+temp : 임시적으로 사용할 이미지
+main : 메인페이지에서만 사용할 이미지
+페이지명 : 페이지명으로 폴더 생성 후 해당 페이지에서만 사용하는 이미지
+
+
+SASS 구조 매뉴얼
+구조
+1) import
+- keyframe.scss : 애니메이션에 사용할 keyframe 모음 
+- mixin.scss : 자주 사용하는 mixin 모음
+- reset.scss : 전반적인 element의 reset을 할 css 소스
+- variable.scss : SASS에서 사용할 공통적 변수 모음
+
+2) include
+- common.scss : 공통적으로 사용할 css
+- layout.scss : 전반적인 레이아웃을 담당하는 css
+- main.scss : 메인에서 사용할 css
+
+* 그외의 구조는 본인 판단에 따라 생성
